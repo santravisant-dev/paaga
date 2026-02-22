@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mind Anchor | Professional Psychological Support</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+body{background:white;color:black;overflow-x:hidden;scroll-behavior:smooth;}
+
+nav{
+position:fixed;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+background:white;
+border-bottom:1px solid #eee;
+z-index:1000;
+}
+
+nav h2{font-weight:700;}
+nav ul{display:flex;gap:30px;list-style:none;}
+nav a{text-decoration:none;color:black;font-weight:500;}
+
+section{
+min-height:100vh;
+padding:120px 8%;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+position:relative;
+}
+
+.hero-text{
+position:absolute;
+z-index:5;
+max-width:800px;
+}
+
+.hero-text h1{
+font-size:64px;
+font-weight:700;
+letter-spacing:-1px;
+}
+
+.hero-text p{
+margin-top:20px;
+font-size:18px;
+opacity:.7;
+}
+
+.btn{
+margin-top:30px;
+padding:14px 35px;
+background:black;
+color:white;
+text-decoration:none;
+border-radius:40px;
+transition:.3s;
+display:inline-block;
+}
+.btn:hover{transform:scale(1.05);}
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+z-index:1;
+}
+
+.services{
+background:#f7f7f7;
+}
+
+.cards{
+display:flex;
+flex-wrap:wrap;
+gap:30px;
+margin-top:50px;
+justify-content:center;
+}
+
+.card{
+background:white;
+padding:35px;
+width:300px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+transition:.4s;
+}
+.card:hover{transform:translateY(-12px);}
+
+.testimonials{
+background:white;
+}
+
+.testimonial{
+max-width:600px;
+margin:20px auto;
+opacity:.8;
+}
+
+.contact form{
+display:flex;
+flex-direction:column;
+gap:15px;
+width:350px;
+margin-top:30px;
+}
+
+input, textarea{
+padding:12px;
+border-radius:10px;
+border:1px solid #ddd;
+}
+
+footer{
+background:black;
+color:white;
+padding:40px;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2>Mind Anchor</h2>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section id="home">
+<div class="hero-text">
+<h1>When Thoughts Overwhelm,<br>Find Your Anchor.</h1>
+<p>Confidential, structured therapy for anxiety, overthinking and emotional imbalance. Evidence-based methods. Real transformation.</p>
+<a href="#contact" class="btn">Book Consultation</a>
+</div>
+</section>
+
+<section id="about">
+<h2>About Mind Anchor</h2>
+<p style="max-width:700px;margin-top:20px;opacity:.7;">
+Mind Anchor is a modern psychological support platform designed to help individuals regain clarity, stability and emotional strength. 
+We combine structured therapeutic frameworks with deep human understanding to guide meaningful mental transformation.
+</p>
+</section>
+
+<section class="services" id="services">
+<h2>Our Services</h2>
+<div class="cards">
+<div class="card">
+<h3>Anxiety Therapy</h3>
+<p>Break repetitive stress and anxiety cycles using structured psychological strategies.</p>
+</div>
+<div class="card">
+<h3>Overthinking Support</h3>
+<p>Calm mental noise and regain control over racing thoughts.</p>
+</div>
+<div class="card">
+<h3>Emotional Recovery</h3>
+<p>Confidential trauma-informed healing sessions for long-term balance.</p>
+</div>
+</div>
+</section>
+
+<section class="testimonials">
+<h2>What Clients Say</h2>
+<div class="testimonial">
+"Mind Anchor helped me break years of anxiety patterns. The clarity I’ve gained changed everything."
+</div>
+<div class="testimonial">
+"I finally feel in control of my thoughts again. Structured, professional and deeply supportive."
+</div>
+</section>
+
+<section class="contact" id="contact">
+<h2>Start Your Healing Journey</h2>
+<form>
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Email Address" required>
+<textarea rows="4" placeholder="Describe your concern"></textarea>
+<button class="btn" type="submit">Send Request</button>
+</form>
+</section>
+
+<footer>
+© 2026 Mind Anchor | Privacy Policy | Terms & Conditions
+</footer>
+
+<script>
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,0.1,100);
+camera.position.set(0,1.5,5);
+
+const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Light
+const light=new THREE.DirectionalLight(0x000000,2);
+light.position.set(5,10,7);
+scene.add(light);
+
+const material=new THREE.MeshStandardMaterial({color:0x000000});
+
+// Head
+const head=new THREE.Mesh(new THREE.SphereGeometry(0.6,32,32),material);
+head.position.y=2;
+scene.add(head);
+
+// Body
+const body=new THREE.Mesh(new THREE.CylinderGeometry(0.7,0.7,2,32),material);
+body.position.y=0.8;
+scene.add(body);
+
+// Arms
+const armGeo=new THREE.CylinderGeometry(0.18,0.18,1.6,32);
+
+const leftArm=new THREE.Mesh(armGeo,material);
+leftArm.rotation.z=Math.PI/3;
+leftArm.position.set(-0.8,1.8,0);
+scene.add(leftArm);
+
+const rightArm=new THREE.Mesh(armGeo,material);
+rightArm.rotation.z=-Math.PI/3;
+rightArm.position.set(0.8,1.8,0);
+scene.add(rightArm);
+
+// Thought Particles
+const particles=[];
+const particleGeo=new THREE.SphereGeometry(0.05,8,8);
+const particleMat=new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:0.4});
+
+for(let i=0;i<30;i++){
+let p=new THREE.Mesh(particleGeo,particleMat);
+p.position.set((Math.random()-0.5)*2,2+Math.random()*1,(Math.random()-0.5)*2);
+scene.add(p);
+particles.push(p);
+}
+
+function animate(){
+requestAnimationFrame(animate);
+scene.rotation.y+=0.002;
+head.position.y=2+Math.sin(Date.now()*0.002)*0.05;
+
+particles.forEach(p=>{
+p.position.y+=0.01;
+if(p.position.y>3.5){
+p.position.y=2;
+}
+});
+
+renderer.render(scene,camera);
+}
+animate();
+
+window.addEventListener('resize',()=>{
+renderer.setSize(window.innerWidth,window.innerHeight);
+camera.aspect=window.innerWidth/window.innerHeight;
+camera.updateProjectionMatrix();
+});
+</script>
+
+</body>
+</html>
