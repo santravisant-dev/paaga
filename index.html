@@ -1,83 +1,51 @@
 
-<script>
-gsap.registerPlugin(ScrollTrigger);
+<section id="about">
+<div class="content">
+<h2>About Mind Anchor</h2>
+<p>
+Mind Anchor was created to help individuals regain clarity and emotional balance in an overwhelming world.
+We specialize in understanding patterns of anxiety, chronic overthinking, stress burnout, and emotional instability.
 
-// SCENE
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({alpha:true, antialias:true});
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-document.body.appendChild(renderer.domElement);
+Our approach combines structured psychological frameworks with practical therapeutic guidance.
+Every session is confidential, science-based, and tailored specifically to your mental patterns — not a one-size-fits-all method.
 
-// BETTER GEOMETRY (Smooth Organic Sphere)
-const geometry = new THREE.SphereGeometry(2, 128, 128);
+We focus on long-term stability, not temporary relief.
+Mental strength is built systematically, and we guide you through that process step by step.
+</p>
+</div>
+</section>
 
-// PREMIUM MATERIAL
-const material = new THREE.MeshPhysicalMaterial({
-  color: 0xf5f5f5,
-  metalness: 0.1,
-  roughness: 0.2,
-  transmission: 0.6,
-  thickness: 0.5,
-  transparent: true,
-  opacity: 0.95,
-  clearcoat: 1,
-  clearcoatRoughness: 0.1
-});
+<section id="services">
+<div class="content">
+<h2>Our Services</h2>
 
-const brain = new THREE.Mesh(geometry, material);
-scene.add(brain);
+<p><strong>1. Anxiety & Overthinking Therapy</strong><br>
+Identify thought loops, cognitive distortions, and emotional triggers.
+Develop structured tools to regain mental control and reduce constant worry.</p>
 
-camera.position.z = 6;
+<br>
 
-// LIGHTING
-const light1 = new THREE.PointLight(0xffffff, 1.5);
-light1.position.set(5,5,5);
-scene.add(light1);
+<p><strong>2. Stress & Burnout Management</strong><br>
+Designed for professionals and students facing high mental pressure.
+We build mental resilience strategies that restore clarity and focus.</p>
 
-const light2 = new THREE.PointLight(0xffffff, 1);
-light2.position.set(-5,-5,5);
-scene.add(light2);
+<br>
 
-const ambient = new THREE.AmbientLight(0xffffff, 0.8);
-scene.add(ambient);
+<p><strong>3. Emotional Regulation Coaching</strong><br>
+Learn how to manage intense emotions, impulsive reactions, and mood instability
+through evidence-based psychological practices.</p>
 
-// FLOATING ANIMATION
-gsap.to(brain.position, {
-  y: 0.3,
-  repeat: -1,
-  yoyo: true,
-  duration: 3,
-  ease: "sine.inOut"
-});
+<br>
 
-// SCROLL CONTROLLED ROTATION
-gsap.to(brain.rotation, {
-  scrollTrigger:{
-    scrub: true
-  },
-  x: Math.PI * 2,
-  y: Math.PI * 2
-});
+<p><strong>4. Relationship & Communication Counseling</strong><br>
+Improve emotional intelligence, boundary setting, and communication patterns
+to create stable and healthy relationships.</p>
 
-// SCROLL Z DEPTH
-gsap.to(brain.position,{
-  scrollTrigger:{
-    scrub: true
-  },
-  z: -4
-});
+<br>
 
-function animate(){
-  requestAnimationFrame(animate);
-  renderer.render(scene, camera);
-}
-animate();
+<p><strong>5. Online Confidential Sessions</strong><br>
+Secure virtual therapy sessions accessible worldwide,
+ensuring privacy, comfort, and professional guidance from anywhere.</p>
 
-window.addEventListener("resize",()=>{
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  camera.aspect = window.innerWidth/window.innerHeight;
-  camera.updateProjectionMatrix();
-});
-</script>
+</div>
+</section>
